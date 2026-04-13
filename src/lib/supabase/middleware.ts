@@ -7,6 +7,7 @@ import { NextResponse, type NextRequest } from "next/server";
 // middleware redirects them to /login, link previews silently break.
 const PUBLIC_PATHS = [
   "/login",
+  "/auth/confirm", // email OTP verification (recovery, invite, magic link)
   "/_next",
   "/favicon.ico",
   "/opengraph-image",
