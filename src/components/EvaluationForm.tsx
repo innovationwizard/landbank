@@ -21,8 +21,8 @@ import { findZoneForLocation } from "@/lib/rubric/fetch";
 function Label({ children, hint }: { children: React.ReactNode; hint?: string }) {
   return (
     <label className="block space-y-1">
-      <span className="text-sm font-medium text-forma-100">{children}</span>
-      {hint && <span className="block text-xs text-forma-400">{hint}</span>}
+      <span className="text-sm font-medium text-forma-900">{children}</span>
+      {hint && <span className="block text-xs text-forma-600">{hint}</span>}
     </label>
   );
 }
@@ -47,10 +47,10 @@ function Input({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full bg-forma-800 border border-forma-700 rounded-lg px-3 py-2.5 text-sm text-forma-50 placeholder:text-forma-500 focus:outline-none focus:border-accent/60 focus:ring-1 focus:ring-accent/30 transition-colors"
+        className="w-full bg-forma-200 border border-forma-300 rounded-lg px-3 py-2.5 text-sm text-forma-950 placeholder:text-forma-500 focus:outline-none focus:border-accent/60 focus:ring-1 focus:ring-accent/30 transition-colors"
       />
       {suffix && (
-        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-forma-400">
+        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-forma-600">
           {suffix}
         </span>
       )}
@@ -73,7 +73,7 @@ function Select({
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full bg-forma-800 border border-forma-700 rounded-lg px-3 py-2.5 text-sm text-forma-50 focus:outline-none focus:border-accent/60 focus:ring-1 focus:ring-accent/30 transition-colors appearance-none cursor-pointer"
+      className="w-full bg-forma-200 border border-forma-300 rounded-lg px-3 py-2.5 text-sm text-forma-950 focus:outline-none focus:border-accent/60 focus:ring-1 focus:ring-accent/30 transition-colors appearance-none cursor-pointer"
     >
       {placeholder && (
         <option value="" disabled>
@@ -109,8 +109,8 @@ function RadioGroup({
             onClick={() => onChange(o.value)}
             className={`px-3 py-2 rounded-lg border text-sm transition-all ${
               selected
-                ? "bg-accent/15 border-accent/50 text-accent-light"
-                : "bg-forma-800 border-forma-700 text-forma-300 hover:border-forma-500"
+                ? "bg-accent/15 border-accent/50 text-accent-dark"
+                : "bg-forma-200 border-forma-300 text-forma-700 hover:border-forma-500"
             }`}
           >
             {o.label}
@@ -138,7 +138,7 @@ function ToggleChip({
   ];
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm text-forma-200 min-w-[100px]">{label}</span>
+      <span className="text-sm text-forma-800 min-w-[100px]">{label}</span>
       <div className="flex gap-1">
         {states.map((s) => {
           const active = value === s.v;
@@ -150,11 +150,11 @@ function ToggleChip({
               className={`px-2.5 py-1 rounded text-xs font-medium transition-all ${
                 active
                   ? s.v === true
-                    ? "bg-success/20 text-green-400 border border-success/30"
+                    ? "bg-success/20 text-success border border-success/30"
                     : s.v === false
-                      ? "bg-danger/20 text-red-400 border border-danger/30"
-                      : "bg-forma-600/30 text-forma-300 border border-forma-500/30"
-                  : "bg-forma-800 text-forma-400 border border-forma-700 hover:border-forma-500"
+                      ? "bg-danger/20 text-danger border border-danger/30"
+                      : "bg-forma-400/30 text-forma-700 border border-forma-500/30"
+                  : "bg-forma-200 text-forma-600 border border-forma-300 hover:border-forma-500"
               }`}
             >
               {s.label}
@@ -301,7 +301,7 @@ export function EvaluationForm({ rubric, onSubmit }: Props) {
 
           {detectedZone && (
             <div className="flex items-center gap-2 text-xs">
-              <span className="text-forma-400">Estrategia detectada:</span>
+              <span className="text-forma-600">Estrategia detectada:</span>
               <span className="px-2 py-0.5 rounded bg-accent/10 text-accent font-medium">
                 {detectedZone.strategy}
               </span>
@@ -376,16 +376,16 @@ export function EvaluationForm({ rubric, onSubmit }: Props) {
             id="esquinero"
             checked={esquinero}
             onChange={(e) => setEsquinero(e.target.checked)}
-            className="w-4 h-4 rounded border-forma-600 bg-forma-800 text-accent accent-accent"
+            className="w-4 h-4 rounded border-forma-400 bg-forma-200 text-accent accent-accent"
           />
-          <label htmlFor="esquinero" className="text-sm text-forma-200 cursor-pointer">
+          <label htmlFor="esquinero" className="text-sm text-forma-800 cursor-pointer">
             Terreno esquinero (doble frente)
           </label>
         </div>
       </Section>
 
       <Section title="Servicios">
-        <p className="text-xs text-forma-400 -mt-2">
+        <p className="text-xs text-forma-600 -mt-2">
           Marque si el servicio está disponible en el perímetro del terreno. Use &quot;?&quot; si no sabe.
         </p>
         <div className="space-y-2">
@@ -451,8 +451,8 @@ export function EvaluationForm({ rubric, onSubmit }: Props) {
         disabled={!isValid}
         className={`w-full py-3 rounded-lg font-medium text-sm tracking-wide uppercase transition-all ${
           isValid
-            ? "bg-accent text-forma-950 hover:bg-accent-light active:scale-[0.99]"
-            : "bg-forma-700 text-forma-400 cursor-not-allowed"
+            ? "bg-accent text-forma-50 hover:bg-accent-light active:scale-[0.99]"
+            : "bg-forma-300 text-forma-600 cursor-not-allowed"
         }`}
       >
         Evaluar terreno

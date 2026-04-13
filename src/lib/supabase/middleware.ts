@@ -1,7 +1,22 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/login", "/_next", "/favicon.ico"];
+// Public paths: auth page + social-crawler asset routes.
+// Next.js serves opengraph-image / icon / apple-icon as dynamic routes at /,
+// and WhatsApp/Facebook/LinkedIn fetch them unauthenticated — if the
+// middleware redirects them to /login, link previews silently break.
+const PUBLIC_PATHS = [
+  "/login",
+  "/_next",
+  "/favicon.ico",
+  "/opengraph-image",
+  "/twitter-image",
+  "/icon",
+  "/apple-icon",
+  "/manifest.webmanifest",
+  "/robots.txt",
+  "/sitemap.xml",
+];
 
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });

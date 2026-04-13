@@ -5,28 +5,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Elite architect palette — warm off-white to deep ink.
+        // 50-300: backgrounds and surfaces (alabaster -> chalk)
+        // 400-500: borders, disabled, muted text (putty / graphite)
+        // 600-950: body and heading text (slate -> carbon)
         forma: {
-          950: "#0a0f1a",
-          900: "#111827",
-          800: "#1a2332",
-          700: "#243044",
-          600: "#334155",
-          500: "#475569",
-          400: "#64748b",
-          300: "#94a3b8",
-          200: "#cbd5e1",
-          100: "#e8edf3",
-          50: "#f1f5f9",
+          50:  "#FAF8F3", // alabaster
+          100: "#F1EDE4", // bone
+          200: "#E6E1D3", // limestone
+          300: "#CFC8B6", // chalk
+          400: "#A19B8A", // putty
+          500: "#6A6558", // graphite
+          600: "#4A463D", // slate
+          700: "#2E2B25", // ink
+          800: "#1C1B18", // obsidian
+          900: "#12110F", // carbon
+          950: "#080706", // near-black
         },
         accent: {
-          DEFAULT: "#c8a456",
-          light: "#dbb96e",
-          dark: "#a8883e",
-          50: "#faf6eb",
+          DEFAULT: "#8B5A3C", // walnut
+          light:   "#A67A5B", // tobacco
+          dark:    "#6B4423", // burnt umber
+          50:      "#F3ECE1", // walnut wash
         },
-        danger: "#dc2626",
-        success: "#16a34a",
-        warning: "#d97706",
+        success: "#4A5D3F", // moss
+        warning: "#B8935A", // aged brass
+        danger:  "#8C3A2E", // rust
       },
       fontFamily: {
         display: ["var(--font-display)", "serif"],

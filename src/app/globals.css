@@ -2,24 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --font-display: 'DM Serif Display', serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --color-bg: #0a0f1a;
-  --color-surface: #111827;
-  --color-surface-2: #1a2332;
-  --color-border: #243044;
-  --color-text: #e8edf3;
-  --color-text-muted: #94a3b8;
-  --color-accent: #c8a456;
-  --color-accent-light: #dbb96e;
-  --color-danger: #dc2626;
-  --color-success: #16a34a;
-  --color-warning: #d97706;
+  --color-bg: #FAF8F3;
+  --color-surface: #F1EDE4;
+  --color-surface-2: #E6E1D3;
+  --color-border: #CFC8B6;
+  --color-text: #1C1B18;
+  --color-text-muted: #6A6558;
+  --color-accent: #8B5A3C;
+  --color-accent-light: #A67A5B;
+  --color-danger: #8C3A2E;
+  --color-success: #4A5D3F;
+  --color-warning: #B8935A;
 }
 
 * {
@@ -32,9 +32,13 @@ body {
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
 }
 
-/* Score bar animation */
+h1, h2, h3, h4, h5, h6, .font-display {
+  letter-spacing: -0.01em;
+}
+
 @keyframes score-fill {
   from { width: 0%; }
 }
@@ -43,18 +47,18 @@ body {
   animation: score-fill 0.8s ease-out forwards;
 }
 
-/* Subtle grain overlay */
+/* Subtle paper grain — low opacity so it reads as warm texture, not noise */
 .grain::before {
   content: '';
   position: fixed;
   inset: 0;
-  opacity: 0.03;
+  opacity: 0.04;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   z-index: 50;
 }
 
-/* Form elements */
 input[type="number"],
 select {
   font-family: var(--font-mono);

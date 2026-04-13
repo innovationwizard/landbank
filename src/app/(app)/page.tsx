@@ -80,14 +80,14 @@ export default function Home() {
   }
 
   if (rubricLoading) {
-    return <p className="text-center text-forma-400 py-16">Cargando rúbrica…</p>;
+    return <p className="text-center text-forma-600 py-16">Cargando rúbrica…</p>;
   }
 
   if (rubricError || !rubric) {
     return (
       <div className="max-w-md mx-auto space-y-4 text-center py-16">
-        <h2 className="font-display text-xl text-red-400">Error cargando rúbrica</h2>
-        <p className="text-sm text-forma-400">{rubricError}</p>
+        <h2 className="font-display text-xl text-danger">Error cargando rúbrica</h2>
+        <p className="text-sm text-forma-600">{rubricError}</p>
         <p className="text-xs text-forma-500">
           Verifique que las migraciones y el seed SQL se hayan ejecutado en Supabase.
         </p>
@@ -96,7 +96,7 @@ export default function Home() {
   }
 
   if (!weights) {
-    return <p className="text-center text-forma-400 py-16">Cargando pesos del usuario…</p>;
+    return <p className="text-center text-forma-600 py-16">Cargando pesos del usuario…</p>;
   }
 
   return (
@@ -104,8 +104,8 @@ export default function Home() {
       {!result ? (
         <>
           <div className="space-y-2">
-            <h2 className="font-display text-2xl text-forma-50">Evaluación rápida de terreno</h2>
-            <p className="text-forma-400 text-sm leading-relaxed max-w-xl">
+            <h2 className="font-display text-2xl text-forma-950">Evaluación rápida de terreno</h2>
+            <p className="text-forma-600 text-sm leading-relaxed max-w-xl">
               Ingrese los datos básicos del terreno. La evaluación detectará automáticamente la
               estrategia aplicable y generará un puntaje por categoría.
             </p>

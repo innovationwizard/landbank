@@ -15,11 +15,11 @@ interface AssessmentRow {
 }
 
 const VERDICT_STYLE: Record<string, { bg: string; text: string; label: string }> = {
-  excelente:  { bg: "bg-green-500/15",  text: "text-green-400",  label: "Excelente" },
-  bueno:      { bg: "bg-accent/15",     text: "text-accent-light", label: "Bueno" },
-  aceptable:  { bg: "bg-yellow-500/15", text: "text-yellow-400",  label: "Aceptable" },
-  riesgoso:   { bg: "bg-orange-500/15", text: "text-orange-400",  label: "Riesgoso" },
-  no_viable:  { bg: "bg-red-500/15",    text: "text-red-400",     label: "No viable" },
+  excelente:  { bg: "bg-success/15",  text: "text-success",  label: "Excelente" },
+  bueno:      { bg: "bg-accent/15",     text: "text-accent-dark", label: "Bueno" },
+  aceptable:  { bg: "bg-warning/15", text: "text-warning",  label: "Aceptable" },
+  riesgoso:   { bg: "bg-warning/15", text: "text-warning",  label: "Riesgoso" },
+  no_viable:  { bg: "bg-danger/15",    text: "text-danger",     label: "No viable" },
 };
 
 export default function AssessmentsPage() {
@@ -72,19 +72,19 @@ export default function AssessmentsPage() {
     await load();
   }
 
-  if (loading) return <p className="text-center text-forma-400 py-16">Cargando…</p>;
+  if (loading) return <p className="text-center text-forma-600 py-16">Cargando…</p>;
 
   return (
     <div className="space-y-6">
       <div className="space-y-1">
-        <h2 className="font-display text-2xl text-forma-50">Historial de evaluaciones</h2>
-        <p className="text-forma-400 text-sm">
+        <h2 className="font-display text-2xl text-forma-950">Historial de evaluaciones</h2>
+        <p className="text-forma-600 text-sm">
           {rows.length === 0 ? "No hay evaluaciones guardadas todavía." : `${rows.length} evaluación(es) guardadas.`}
         </p>
       </div>
 
       {error && (
-        <p className="text-xs text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
+        <p className="text-xs text-danger bg-danger/10 border border-danger/20 rounded-lg px-3 py-2">
           {error}
         </p>
       )}
@@ -102,12 +102,12 @@ export default function AssessmentsPage() {
           return (
             <div
               key={r.id}
-              className="bg-forma-900 border border-forma-700/50 rounded-xl p-4 space-y-3"
+              className="bg-forma-100 border border-forma-300/50 rounded-xl p-4 space-y-3"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0 space-y-1">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-sm font-medium text-forma-100 truncate">
+                    <span className="text-sm font-medium text-forma-900 truncate">
                       {r.label ?? "Sin etiqueta"}
                     </span>
                     <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-medium ${v.bg} ${v.text}`}>
@@ -120,12 +120,12 @@ export default function AssessmentsPage() {
                   <p className="text-xs text-forma-500 tabular-nums">{date}</p>
                 </div>
                 <div className="shrink-0 text-right">
-                  <div className="font-mono text-xl text-forma-50 tabular-nums">{r.final_score}</div>
+                  <div className="font-mono text-xl text-forma-950 tabular-nums">{r.final_score}</div>
                   <div className="text-[10px] text-forma-500 uppercase tracking-wider">/ 100</div>
                 </div>
               </div>
 
-              <p className="text-xs text-forma-300 leading-relaxed">{r.recommendation}</p>
+              <p className="text-xs text-forma-700 leading-relaxed">{r.recommendation}</p>
 
               {editingId === r.id ? (
                 <div className="space-y-2">
@@ -134,13 +134,13 @@ export default function AssessmentsPage() {
                     onChange={(e) => setDraftNotes(e.target.value)}
                     rows={3}
                     placeholder="Notas…"
-                    className="w-full bg-forma-800 border border-forma-700 rounded-lg px-3 py-2 text-xs text-forma-50 focus:outline-none focus:border-accent/60"
+                    className="w-full bg-forma-200 border border-forma-300 rounded-lg px-3 py-2 text-xs text-forma-950 focus:outline-none focus:border-accent/60"
                   />
                   <div className="flex gap-2">
                     <button
                       type="button"
                       onClick={() => saveNotes(r.id)}
-                      className="px-3 py-1.5 rounded-md bg-accent text-forma-950 text-[11px] font-medium uppercase tracking-wider hover:bg-accent-light"
+                      className="px-3 py-1.5 rounded-md bg-accent text-forma-50 text-[11px] font-medium uppercase tracking-wider hover:bg-accent-light"
                     >
                       Guardar
                     </button>
@@ -150,7 +150,7 @@ export default function AssessmentsPage() {
                         setEditingId(null);
                         setDraftNotes("");
                       }}
-                      className="px-3 py-1.5 rounded-md border border-forma-600 text-[11px] text-forma-300 hover:border-forma-400"
+                      className="px-3 py-1.5 rounded-md border border-forma-400 text-[11px] text-forma-700 hover:border-forma-600"
                     >
                       Cancelar
                     </button>
@@ -159,7 +159,7 @@ export default function AssessmentsPage() {
               ) : (
                 <>
                   {r.notes && (
-                    <p className="text-xs text-forma-400 bg-forma-800/50 border border-forma-700/30 rounded px-3 py-2 leading-relaxed whitespace-pre-wrap">
+                    <p className="text-xs text-forma-600 bg-forma-200/50 border border-forma-300/30 rounded px-3 py-2 leading-relaxed whitespace-pre-wrap">
                       {r.notes}
                     </p>
                   )}
@@ -170,14 +170,14 @@ export default function AssessmentsPage() {
                         setEditingId(r.id);
                         setDraftNotes(r.notes ?? "");
                       }}
-                      className="text-forma-300 hover:text-forma-100 transition-colors"
+                      className="text-forma-700 hover:text-forma-900 transition-colors"
                     >
                       {r.notes ? "Editar notas" : "Agregar notas"}
                     </button>
                     <button
                       type="button"
                       onClick={() => deleteOne(r.id)}
-                      className="text-red-400 hover:text-red-300 transition-colors"
+                      className="text-danger hover:text-danger/80 transition-colors"
                     >
                       Eliminar
                     </button>
